@@ -67,16 +67,16 @@ Repeat the steps to add multiple users as required.
 - Step 1: Open the Group Policy Management console by click Tool > Group Policy Management
 - Step 2: Expand the Forest: xyzcompany.com > double click "Domains" > double click xyz.company.com on the Domains pane
 - Step 3: Click "Linked Group Policy Object" > right click "Default Domain Policy" > click Edit
-- Step 4: Expand "Computer Configuration" > expand "Policies" > expand "Windows Settings" > expand "Secuity Settings" > expand "Account Policies" > right click "Password Policy" > click Open
+- Step 4: Expand "Computer Configuration" > expand "Policies" > expand "Windows Settings" > expand "Security Settings" > expand "Account Policies" > right click "Password Policy" > click Open
 
 ![aduc9](https://github.com/user-attachments/assets/114b4091-5b3c-4f36-a184-1515975c05df)
 
-- Step 5: From the revealed password settings available, right click on any of them and select Properties to configure the selected password policy.
+- Step 5: From the revealed password settings available, right click on any of them and select Properties to configure the selected password policy > click Apply > click OK.
 
 ![aduc10](https://github.com/user-attachments/assets/e0a1512c-a561-4fcb-8367-f318cdb4f7d8)
 
 ## Result
 
-A Windows Server VM with active Domain Controller and a Windows 10 VM which has been joined to the domain controller are created. The purpose is to simulate a real-world enterprise environment of centralized user authentication, group policy management, and security configurations which are essential for improving the security architecture of XYZ Company.
+All basic setup of Active Directory required to manage users authorization and authentication in the xyzcompany.com domain are set up. The configuration of password policy will strengthen the security of users' credentials.
 
-The next activity is to setup the AD such as creating Organizational Units (OU), user accounts and groups with different policies within the OUs. 
+The next activity is to setup pfSense VM so that the Windows Server VM and all computers joined with the domain can have internet access.
