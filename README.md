@@ -49,6 +49,7 @@ In the ADUC console, hover the cursor over the newly created OU (e.g., "Admins")
 - Step 2: Fill out the group name and specify group scopes and types > click OK
 
 ![aduc6](https://github.com/user-attachments/assets/5f8da243-c9b4-4660-abba-ce2698f582af)
+*The Group Scope of "Domain Local" and Group Type "Security" are selected to assign members' permissions to resources within the xyzcompany.com domain. This group can include members from any domain in the forest (users, groups, or computers).*
 
 ## Add Users into a Group
 
@@ -63,6 +64,16 @@ Repeat the steps to add multiple users as required.
 
 ## Configure & Apply Password Policies into the Domain
 
+- Step 1: Open the Group Policy Management console by click Tool > Group Policy Management
+- Step 2: Expand the Forest: xyzcompany.com > double click "Domains" > double click xyz.company.com on the Domains pane
+- Step 3: Click "Linked Group Policy Object" > right click "Default Domain Policy" > click Edit
+- Step 4: Expand "Computer Configuration" > expand "Policies" > expand "Windows Settings" > expand "Secuity Settings" > expand "Account Policies" > right click "Password Policy" > click Open
+
+![aduc9](https://github.com/user-attachments/assets/114b4091-5b3c-4f36-a184-1515975c05df)
+
+- Step 5: From the revealed password settings available, right click on any of them and select Properties to configure the selected password policy.
+
+![aduc10](https://github.com/user-attachments/assets/e0a1512c-a561-4fcb-8367-f318cdb4f7d8)
 
 ## Result
 
