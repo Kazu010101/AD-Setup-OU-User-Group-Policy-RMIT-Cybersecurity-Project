@@ -75,7 +75,7 @@ Repeat the steps to add multiple users as required.
 
 ![aduc10](https://github.com/user-attachments/assets/e0a1512c-a561-4fcb-8367-f318cdb4f7d8)
 
-- Step 6: Close the editor and run the command gpupdate /force in PowerShell as Administrator to apply the policy:
+- Step 6: Close the editor and run the command `gpupdate /force` in PowerShell as Administrator to apply the policy:
 
 ![aduc11](https://github.com/user-attachments/assets/93226806-cf25-49dd-adbf-6edd62dbb344)
 
@@ -84,4 +84,4 @@ Repeat the steps to add multiple users as required.
 
 The completion of this Active Directory lab simulates an improvement for xyz company in organizing users and groups within a domain, ensuring clear role-based access control, and centralizing management. Furthermore, implementing password policies and structuring users into OUs and groups are necessary control to minimizing unauthorized access and improving overall domain security posture.
 
-The next activity is to setup pfSense VM so that the Windows Server VM and all computers joined with the domain can have internet access.
+The next activity is to install pfSense VM and link it with the Windows Server VM so that the server and computers joined in the domain have access to the internet.
