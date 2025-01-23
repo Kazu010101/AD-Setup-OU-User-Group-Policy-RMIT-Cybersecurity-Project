@@ -82,7 +82,7 @@ Repeat the steps to add the user 'Admin Two' into "Classified Information" Group
 
 ## Verification of Group Policy
 
-At this point, the "Classified Information" Group created before comprises of 2 users only, which are "Admin One" and "Admin Two". We can verify that other users who are not joined in the group cannot access the folder by creating a Shared Folder on the Windows Server VM:
+At this point, the "Classified Information" Group created before comprises of 2 users only, which are "Admin One" and "Admin Two". We can verify that other users who are not joined in the group cannot access the folder by creating a Shared Folder on the Windows Server VM and configuring the permission as follows:
 
 - Create a folder on the C: drive (C:\Classified Information).
 - Right-click the folder, select Properties, and go to the Sharing tab.
