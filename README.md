@@ -32,12 +32,12 @@ We can verify the created OUs as they appear in the left pane of the ADUC consol
 
 - Step 1: In the ADUC console, hover the cursor over the newly created OU (e.g., "Admins").
 - Step 2: Right-click the selected OU and select New > User.
-- Step 3: Fill out the user details (e.g., First Name, Last Name, and User Logon Name) > click Next.
+- Step 3: Fill out the user details (e.g., First Name "Admin", Last Name "One", and User Logon Name "Admin1") > click Next.
 - Step 4: Set up Password options as required, (e.g., User must change password at next logon) > click Finish.
 
 ![aduc4](https://github.com/user-attachments/assets/b88f6ce9-fb56-46cc-87a1-3757667bab24)
 
-Repeat the steps to create multiple users as required.
+Repeat the steps to create "Admin Two" on the Admins OU, and "Consultant One" and "Consultant Two" on the Consultants OU.
 
 ![aduc5](https://github.com/user-attachments/assets/72c2a081-e343-4ad0-86a4-364c33820808)
 
@@ -46,19 +46,20 @@ Repeat the steps to create multiple users as required.
 In the ADUC console, hover the cursor over the newly created OU (e.g., "Admins"):
 
 - Step 1: Right-click the selected OU and select New > Group.
-- Step 2: Fill out the group name and specify group scopes and types > click OK
+- Step 2: Fill out the group name "Classified Infomation" and specify group scopes and types > click OK
 
 ![aduc6](https://github.com/user-attachments/assets/5f8da243-c9b4-4660-abba-ce2698f582af)
+
 *The Group Scope of "Domain Local" and Group Type "Security" are selected to assign members' permissions to resources within the xyzcompany.com domain. This group can include members from any domain in the forest (users, groups, or computers).*
 
 ## Add Users into a Group
 
 - Step 1: Double-click the group and go to the Members tab.
-- Step 2: Click Add, type the user names, and click Check Names > click OK
+- Step 2: Click Add, type the user name "Admins One", and click Check Names > click OK
 
 ![aduc7](https://github.com/user-attachments/assets/5ba0c1f6-41ed-4b75-8071-6b5c9be8e106)
 
-Repeat the steps to add multiple users as required.
+Repeat the steps to add the user 'Admin Two' into "Classified Information" Group.
 
 ![aduc8](https://github.com/user-attachments/assets/0c864853-f992-40d0-b46b-1a7b73694f6e)
 
@@ -78,6 +79,36 @@ Repeat the steps to add multiple users as required.
 - Step 6: Close the editor and run the command `gpupdate /force` in PowerShell as Administrator to apply the policy:
 
 ![aduc11](https://github.com/user-attachments/assets/93226806-cf25-49dd-adbf-6edd62dbb344)
+
+## Verification of Group Policy
+
+At this point, the "Classified Information" Group created before comprises of 2 users only, which are "Admin One" and "Admin Two". We can verify that other users who are not joined in the group cannot access the folder by creating a Shared Folder on the Windows Server VM:
+
+- Create a folder on the C: drive (C:\Classified Information).
+- Right-click the folder, select Properties, and go to the Sharing tab.
+- Click Advanced Sharing, check Share this folder, and click Permissions.
+- Remove the default Everyone group and click Add.
+- Type the group name "Classified Information" and click Check Names.
+- Grant Full Control permissions and click OK.
+- Confirm sharing settings and close the dialog.
+
+Next, we setup the NTFS permissions:
+- Go to the Security tab in the folder’s properties.
+- Click Edit, then Add, and enter the group name "Classified Information".
+- Set NTFS permissions ("Full Control") and click OK.
+
+Log-in as Consultant Two (Non-Group Member) on the Windows 10 VM:
+- Open File Explorer and type the shared folder’s UNC path `\\SVR01` in the address bar
+
+![aduc12](https://github.com/user-attachments/assets/76114d81-2dad-483b-b4f2-e4659534fa7a)
+
+- Double Click on the "Classified Information" Folder and the prompt will show Access Denied.
+
+![aduc13](https://github.com/user-attachments/assets/d9c257bf-b2af-4d5c-8020-b77da4a56637)
+
+Log out from the user 'Consultant Two' and re-login into Windows 10 VM as 'Admin Two' to verify that an authorized member could access the "Classified Information" Shared Folder:
+
+![aduc14](https://github.com/user-attachments/assets/03754e11-b39a-4aad-9f72-62f6cdf84410)
 
 
 ## Result
